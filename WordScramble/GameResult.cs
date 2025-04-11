@@ -35,6 +35,8 @@ namespace WordScramble
         public GameResult(string word, double timeTaken)
         {
             // ////////// => TO IMPLEMENT <= //////////// //
+            Word = word;
+            TimeTaken = timeTaken;
         }
     }
 }
