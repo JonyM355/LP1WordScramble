@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using Humanizer;
 
 namespace WordScramble
@@ -65,6 +66,8 @@ namespace WordScramble
         public string GetRandomWord()
         {
             // ////////// => TO IMPLEMENT <= //////////// //
+            string rndWords = words.ToString();
+            char word = random.Next(rndWords).ToString();
         }
 
         /// <summary>
@@ -88,9 +91,14 @@ namespace WordScramble
             {
                 int j = random.Next(i, scrambled.Length);
 
-                char temp = (char)random.Next(scrambled.Length);// ////////// => TO IMPLEMENT <= //////////// //
-                scrambled[i] = (char)random.Next(temp);// ////////// => TO IMPLEMENT <= //////////// //
-                scrambled[j] = (char)random.Next(temp);// ////////// => TO IMPLEMENT <= //////////// //
+                // ////////// => TO IMPLEMENT <= //////////// //
+                char temp = (char)random.Next(scrambled.Length);
+
+                // ////////// => TO IMPLEMENT <= //////////// //
+                scrambled[i] = (char)random.Next(temp);
+                
+                // ////////// => TO IMPLEMENT <= //////////// //
+                scrambled[j] = (char)random.Next(temp);
             }
             return new string(scrambled);
         }
