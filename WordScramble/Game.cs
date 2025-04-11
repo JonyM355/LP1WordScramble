@@ -41,18 +41,6 @@ namespace WordScramble
             }
         }
 
-        /// <summary>
-        /// Starts a new game round where the player must unscramble a word.
-        /// The game measures the time taken by the player to guess the word.
-        /// </summary>
-        /// <remarks>
-        /// In this method, a random word is generated using the 
-        /// <see cref="WordProvider"/> and scrambled. The player is asked to 
-        /// guess the unscrambled word. The game checks if the player's guess 
-        /// is correct. If correct, the result is stored in the game stats 
-        /// board; otherwise, the correct word is displayed. The game stats 
-        /// board only stores the last 5 results.
-        /// </remarks>
         private void StartGame()
         {
             string word = wordProvider.GetRandomWord();
