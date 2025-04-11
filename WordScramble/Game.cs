@@ -7,37 +7,16 @@ namespace WordScramble
 {
     public class Game
     {
-        /// <summary>
-        /// The provider responsible for generating the words for the game.
-        /// </summary>
         private readonly WordProvider wordProvider;
-
-        /// <summary>
-        /// A list to store the last 5 game results for the game stats board.
-        /// </summary>
         private readonly GameResult[] gameStats;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Game"/> class.
-        /// Sets up the word provider, evaluator, and initializes the 
-        /// game stats board.
-        /// </summary>
         public Game()
         {
-            // ////////// => TO IMPLEMENT <= //////////// //
+            wordProvider = new WordProvider();
+            gameStats = new GameResult[5];
         }
 
-        /// <summary>
-        /// Displays the main menu of the game and prompts the user to choose 
-        /// an option. The available choices are to start the game, view the 
-        /// game stats board, or quit the game.
-        /// </summary>
-        /// <remarks>
-        /// This method uses the <see cref="Spectre.Console"/> library to 
-        /// display the main menu and handle user input for choosing different 
-        /// options. The game will continue prompting the user until they choose
-        /// to quit.
-        /// </remarks>
+
         public void ShowMenu()
         {
             while (true)
@@ -51,10 +30,10 @@ namespace WordScramble
                 switch (choice)
                 {
                     case "Start Game":
-                        // ////////// => TO IMPLEMENT <= //////////// //
+                        StartGame();
                         break;
                     case "View Game Stats":
-                        // ////////// => TO IMPLEMENT <= //////////// //
+                        ShowGameStats();
                         break;
                     case "Quit":
                         return;
@@ -79,12 +58,12 @@ namespace WordScramble
             /// <summary>
             /// The randomly chosen word for the current round.
             /// </summary>
-            string word = // ////////// => TO IMPLEMENT <= //////////// //
+            string word = wordProvider.GetRandomWord();// ////////// => TO IMPLEMENT <= //////////// //
 
             /// <summary>
             /// The scrambled version of the word.
             /// </summary>
-            string scrambledWord = // ////////// => TO IMPLEMENT <= //////////// //
+            string scrambledWord = wordProvider.GetScrambledWord(word);// ////////// => TO IMPLEMENT <= //////////// //
 
             AnsiConsole.Clear();
             AnsiConsole.MarkupLine("[bold green]Unscramble the word:[/]");
@@ -117,10 +96,11 @@ namespace WordScramble
                 for (int i = gameStats.Length - 1; i > 0; i--)
                 {
                     // ////////// => TO IMPLEMENT <= //////////// //
+                    gameStats[i] = gameStats[i - 1];
                 }
 
                 // Add new result at the beginning
-                gameStats[0] = // ////////// => TO IMPLEMENT <= //////////// //
+                gameStats[0] = new GameResult();// ////////// => TO IMPLEMENT <= //////////// //
             }
             else
             {
@@ -135,15 +115,7 @@ namespace WordScramble
             Console.ReadLine();
         }
 
-        /// <summary>
-        /// Displays the game stats board showing the last 5 results with the 
-        /// word and time taken.
-        /// </summary>
-        /// <remarks>
-        /// This method uses <see cref="Spectre.Console"/> to format and display
-        /// a table with the game stats board results. Each row displays the 
-        /// rank, word, and time taken for each entry.
-        /// </remarks>
+
         private void ShowGameStats()
         {
             AnsiConsole.Clear();
@@ -156,12 +128,18 @@ namespace WordScramble
             {
                 if (gameStats[i] == null)
                 {
-                    // ////////// => TO IMPLEMENT <= //////////// //
+                    table.AddRow(
+                        (i + 1).ToString(),
+                        "N/A",
+                        "0.00"
+                    );
                 }
                 
-                // Add row to table
-                // Table.AddRow() only accepts strings
-                // ////////// => TO IMPLEMENT <= //////////// //
+                table.AddRow(
+                    (i + 1).ToString(),
+                    gameStats[i].Word.ToString(),
+                    gameStats[i].TimeTaken.ToString("F2")
+                );
             }
 
             AnsiConsole.Write(table);
