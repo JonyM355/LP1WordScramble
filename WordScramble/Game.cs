@@ -112,8 +112,8 @@ namespace WordScramble
                 {
                     table.AddRow(
                         (i + 1).ToString(),
-                        "N/A",
-                        "0.00"
+                        gameStats[i].Word.ToString(),
+                        gameStats[i].TimeTaken.ToString("F2")
                     );
                 }
                 

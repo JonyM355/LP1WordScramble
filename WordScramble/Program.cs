@@ -1,4 +1,6 @@
-﻿namespace WordScramble
+﻿using System;
+
+namespace WordScramble
 {
     /// <summary>
     /// The Program class contains the entry point for the application.
