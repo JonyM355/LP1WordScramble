@@ -25,7 +25,8 @@ namespace WordScramble
         /// </remarks>
         public WordProvider()
         {
-            random = // ////////// => TO IMPLEMENT <= //////////// //
+            // ////////// => TO IMPLEMENT <= //////////// //
+            random = new Random();
 
             string directoryPath = Path.GetFullPath(
                 Path.Combine(
@@ -82,6 +83,7 @@ namespace WordScramble
         public string GetScrambledWord(string word)
         {
             char[] scrambled = word.ToCharArray();
+            
             for (int i = 0; i < scrambled.Length; i++)
             {
                 int j = random.Next(i, scrambled.Length);
