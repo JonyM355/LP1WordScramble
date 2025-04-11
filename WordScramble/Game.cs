@@ -117,11 +117,14 @@ namespace WordScramble
                     );
                 }
                 
-                table.AddRow(
-                    (i + 1).ToString(),
-                    gameStats[i].Word.ToString(),
-                    gameStats[i].TimeTaken.ToString("F2")
-                );
+                if (gameStats[i] != null)
+                {
+                    table.AddRow(
+                        (i + 1).ToString(),
+                        gameStats[i].Word.ToString(),
+                        gameStats[i].TimeTaken.ToString("F2")
+                    );
+                }
             }
 
             AnsiConsole.Write(table);

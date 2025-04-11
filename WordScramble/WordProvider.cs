@@ -67,7 +67,9 @@ namespace WordScramble
         {
             // ////////// => TO IMPLEMENT <= //////////// //
             string rndWords = words.ToString();
-            char word = random.Next(rndWords).ToString();
+            char word = (char)random.Next(rndWords.Length);
+
+            return word.ToString();
         }
 
         /// <summary>
