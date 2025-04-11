@@ -66,10 +66,8 @@ namespace WordScramble
         public string GetRandomWord()
         {
             // ////////// => TO IMPLEMENT <= //////////// //
-            string rndWords = words.ToString();
-            char word = (char)random.Next(rndWords.Length);
-
-            return word.ToString();
+            int index = random.Next(words.Count);
+            return words[index];
         }
 
         /// <summary>
